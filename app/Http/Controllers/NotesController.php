@@ -33,6 +33,15 @@ class NotesController extends Controller
 
     public function store(Request $request)
     {
+        $description = $request->input('description');
+
+        $note = new Note();
+        $note->description = $description;
+        $note->image_url = '';
+        $note->user_id = User::whereEmail('dominique.vilain@hepl.be')->first()->id;
+        $note->save();
+
+
     }
 
     public function show(Note $note)
