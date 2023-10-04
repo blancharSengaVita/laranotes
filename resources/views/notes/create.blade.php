@@ -14,7 +14,7 @@
     <main>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
             <form method="post" action="/notes" enctype="multipart/form-data">
-                <?php csrf_token() ?>
+                @csrf
                 <div class="space-y-12">
                     <div class="border-b border-gray-900/10 pb-12">
                         <h2 class="text-base font-semibold leading-7 text-gray-900">Create a new note</h2>
@@ -27,16 +27,10 @@
                                 <div class="mt-2">
                                     <textarea id="description" name="description" rows="3" class="block px-1.5 w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"><?= $_SESSION['old']['description'] ?? '' ?></textarea>
                                 </div>
-                                <?php if (isset($_SESSION['errors']['description'])) : ?>
-                                <p><?= $_SESSION['errors']['description'] ?></p>
-                                <?php endif ?>
                             </div>
                             <div class="col-span-full">
                                 <label for="thumbnail">Thumbnail</label>
                                 <input type="file" name="thumbnail" id="thumbnail">
-                                <?php if (isset($_SESSION['errors']['thumbnail'])) : ?>
-                                <p><?= $_SESSION['errors']['thumbnail'] ?></p>
-                                <?php endif ?>
                             </div>
                             <div class="flex gap-x-6">
                                 <button type="submit" class="rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
