@@ -26,6 +26,9 @@ class NotesController extends Controller
 
     public function create()
     {
+        $heading = "Note cration";
+
+        return view('notes.create', compact('heading'));
     }
 
     public function store(Request $request)
