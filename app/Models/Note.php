@@ -11,6 +11,7 @@ class Note extends Model
 	use HasFactory;
 
     protected $fillable = ['description', 'image_url', 'user_id'];
+    //ou protected $guarded = []
 
     public function owner(): BelongsTo
     {

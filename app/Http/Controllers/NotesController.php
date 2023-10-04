@@ -33,18 +33,15 @@ class NotesController extends Controller
 
     public function store(Request $request)
     {
-        $description = $request->input('description');
+        $validated = $request->validate([
+           'description' => 'required',
+           'image_url' => 'required',
+           'user_id' => 'exists:users,id',
+        ]);
 
-//        $note = new Note();
-//        $note->description = $description;
-//        $note->image_url = '';
-//        $note->user_id = User:
-//:whereEmail('dominique.vilain@hepl.be')->first()->id;
-//        $note->save();
+        $description = $validated['description'];
 
-        $image_url = '';
-        $user_id = 21;
-        Note::create(compact('description', 'user_id', 'image_url'));
+        Note::create($validated);
 
         return to_route('notes.index');
     }
