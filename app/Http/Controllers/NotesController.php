@@ -35,13 +35,18 @@ class NotesController extends Controller
     {
         $description = $request->input('description');
 
-        $note = new Note();
-        $note->description = $description;
-        $note->image_url = '';
-        $note->user_id = User::whereEmail('dominique.vilain@hepl.be')->first()->id;
-        $note->save();
+//        $note = new Note();
+//        $note->description = $description;
+//        $note->image_url = '';
+//        $note->user_id = User:
+//:whereEmail('dominique.vilain@hepl.be')->first()->id;
+//        $note->save();
 
+        $image_url = '';
+        $user_id = 21;
+        Note::create(compact('description', 'user_id', 'image_url'));
 
+        return to_route('notes.index');
     }
 
     public function show(Note $note)
